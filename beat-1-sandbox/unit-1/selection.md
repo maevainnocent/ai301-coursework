@@ -131,11 +131,11 @@ This is also the basis for the claim comment you write in Unit 2.
 
 **Selection rationale**
 
-1. Fit to my interests and time: I wanted to keep up with my understanding of python and it is tier-1
+1. Fit to my interests and time: I wanted to keep up with my understanding of python and it is tier-1. With time i think it is the perfect first issue fit for my skills and space for growth
 
 2. What the verdict got right, and what I weighed that the rubric couldn't: The verdict got that nobody was on it, the repo is alive, the scope is small and clear. The rubric could not weigh the language, which fix is right, and no maintainer replies.
 
-3. Anticipated difficulty in claiming it: No maintaner has replied so it might take a while for me to get a response.
+3. Anticipated difficulty in claiming it: No maintaner has replied so it might take a while for me to get a response. I also fear someone else might have clained it already.
 
 ---
 
