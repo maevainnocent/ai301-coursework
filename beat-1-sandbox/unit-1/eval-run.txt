@@ -51,4 +51,3 @@ issue-20  reject  accept   NO     graded accept
 
 categories: claimed 4/4  clear-accept 8/8  dead-repo 3/3  policy 1/1  scope 3/4
 agreement: 19/20 scored items  (bar: 18/20: PASS)
-
