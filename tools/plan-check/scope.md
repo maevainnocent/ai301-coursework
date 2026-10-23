@@ -1,3 +1,4 @@
+[scope.md](https://github.com/user-attachments/files/33878340/scope.md)
 # Scope: where your issue lives, and the rules of the room
 
 <!--
@@ -17,7 +18,7 @@ ships.
 Only issues in the course's Path Review repository are in scope this
 week:
 
-- Repo: `<ORG>/<PATH-REVIEW-REPO>` <!-- paste your section's repo from the Unit 1 Check-In page -->
+- Repo: `codepath/pathreview-ai301-fa26-howard`
 
 The repo line above ships as a bracketed placeholder; replacing it is
 step 1 of this unit's assignment. If you do not know your section's
