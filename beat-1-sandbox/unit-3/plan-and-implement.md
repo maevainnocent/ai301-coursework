@@ -1,79 +1,10 @@
-# Unit 3 — Plan and Build
 
-Path: `beat-1-sandbox/unit-3/plan-and-implement.md`
+Hi! Following up on my repro above, here’s my plan.
 
-Record of your plan, the branch you built it on, and the evaluation runs that produced
-`eval-run.txt`. This file is graded at the path above; a copy kept anywhere else in the
-repository is not read.
+After looking into it, I don’t think the scorer itself is the problem. It marks a README as “comprehensive” once it reaches 500 words, and the `test_word_count_category_*` tests already check those limits. The issue is that the fixture in `test_readme_with_all_quality_signals` is only 51 words, so it doesn’t meet either assertion: `word_count > 100` or `word_count_category == "comprehensive"`. Since this test is meant to cover a README with all the quality signals, I think it makes more sense to fix the fixture instead of changing the assertions.
 
-Complete every labelled field below. Each is graded on its own; content placed under the wrong
-label is not graded.
+I’m planning to only edit `tests/unit/test_readme_scorer.py`. I’ll add some filler text to the fixture to get it past 500 words, keep all the quality signals already there, and remove the `xfail(strict=True)` marker for this issue. I won’t change `readme_scorer.py` or any other tests.
 
----
+To make sure everything works, I’ll rerun the same commands from my repro on my branch. The normal run should go from `22 passed, 1 xfailed` to `23 passed`, and the `--runxfail` run should pass instead of failing at `assert 51 > 100`. I’ll also run the rest of `tests/unit` to check that nothing else breaks.
 
-## Posted upstream
-
-**GitHub username**
-
-[Your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comment upstream is identified by this name, and it is
-the only thing that ties it to you. Several students may plan the same
-house issue, so this is what keeps their comments off your score and
-yours off theirs.]
-
-**Plan comment**
-
-[Link to the comment where you posted your plan on the issue. Use the comment's own
-permalink. **Then paste the text of that comment underneath the link** — the pasted text is
-what this field is graded on, so copy across what you actually posted.]
-
----
-
-## Your branch
-
-**Branch**
-
-[The name of the branch you built the change on, exactly as it appears in your fork. The
-naming shape is a type prefix, then the issue number, then a short description. **The issue
-number in the branch name must be the number of the issue you claimed** — a name carrying
-any other number does not satisfy this field.]
-
-**Evidence**
-
-[Your Unit 2 reproduction steps re-run against the built change: the before, then the
-after. Paste both, including the commands you ran and their output.]
-
-## Eval iterations
-
-Answer all four sections. Quote source text directly; paraphrase does not satisfy these
-fields.
-
-**Run history**
-
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
-
-**Package analysis**
-
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
-
-**Check rationale**
-
-[Quote one check from the `rubric.md` you uploaded to `tools/plan-check/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
-
-**Trade-offs**
-
-[Every check gives something up. Any one of these is a complete answer: a package whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
-
----
-
-Related paths: `plan.md` and `eval-run.txt` in this directory; your skill's files in
-`tools/plan-check/`.
+My branch will be `fix/63-readme-scorer-fixture-length`. If anyone thinks changing the assertions would be a better approach, please let me know before I get started!
