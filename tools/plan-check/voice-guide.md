@@ -1,4 +1,3 @@
-[voice-guide.md](https://github.com/user-attachments/files/33878368/voice-guide.md)
 # Voice guide: how I talk upstream
 
 ## Who I am in threads
