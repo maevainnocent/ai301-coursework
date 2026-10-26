@@ -1,5 +1,3 @@
-[plan.md](https://github.com/user-attachments/files/33877963/plan.md)
-
 # Plan: issue #63, README scorer test fixture is too short for its own word-count assertion
 
 Issue: https://github.com/codepath/pathreview-ai301-fa26-howard/issues/63
