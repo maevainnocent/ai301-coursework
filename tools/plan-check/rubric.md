@@ -1,4 +1,3 @@
-[rubric.md](https://github.com/user-attachments/files/33878317/rubric.md)
 # Rubric: is this plan ready to post and build from?
 
 Every check reads the plan package against the issue and the repro
