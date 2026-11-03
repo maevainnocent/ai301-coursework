@@ -1,0 +1,32 @@
+# Rubric: is this pull request ready to submit?
+
+Every check reads the PR package against the plan it claims to
+implement, the issue that plan belongs to, and the repo's stated
+standards. Grade the change, not the polish: a terse PR whose diff
+matches the plan, whose evidence re-runs the repro, and whose stated
+asks are met is ready; a long, confident one whose diff wanders or
+whose evidence never touches the fix is not. "The plan" means the
+plan-context block in an eval bundle, or the student's `plan.md`
+(deviation notes included) in live mode. "The diff" means the unified
+diff in the bundle, or `git diff main...HEAD` in live mode.
+
+## Checks
+
+| Check | Evidence | Pass condition | Weight |
+|---|---|---|---|
+| plan-fidelity | Every file and every hunk in the diff, read against the plan's scope (its change statement, Files list, In/Out lines, "not in scope" lines) and its deviation or deferral notes; then every claim the description makes about what the PR does ("implements the plan exactly", "no other changes", "docs updated", "CHANGELOG added"), read against the diff. | Pass if every hunk does work the plan names, or work a plan deviation note records, or one of these always-in-scope items: a test for the planned behavior, or an entry/file the repo-facts block requires (CHANGELOG, whatsnew, release note); AND every piece of work the plan commits to appears in the diff, or its absence is stated in a plan deviation/deferral note or in the description; AND every description claim about the change is true of the diff. Fail if any hunk does work the plan does not name (a rewrite of nearby code, a renaming pass, a new option/flag/setting, an edit to a file the plan never mentions, a dependency bump) with no deviation note; or a planned piece is missing with no note anywhere; or the description claims something the diff does not contain, or claims fidelity ("exactly as planned", "no changes beyond the plan") the diff contradicts. A disclosed shortfall passes. | required |
+| decisive-evidence | The test-evidence section (and any before/after shown in the description), read against the plan's test plan and the repro steps it names. | Pass if all of these hold: (1) the plan's repro, or the issue's reproducing input, is re-run with a before result and an after result that differ observably (output, exit code, value, rendered result); (2) that re-run exercises the path the diff changes, the same input/shape the issue reports, not a control or a neighboring case that already worked; (3) every failure case or expected-after the plan's test plan names is shown, unless a plan deviation note or the description says it was not run and why; (4) the outcome of the repo's own test suite or checks is stated with a result (a command plus passed/failed or a count). Fail if the only evidence is a claim ("tested locally", "works now", "verified on my machine", "tests pass" with no command or result); if the before/after runs only a control, a single-file/simple case, or a different input than the issue's; if a failure case the plan's test plan names is silently missing; or if no suite/check outcome is shown at all. | required |
+| clean-diff | Every added line in the diff, every hunk's purpose, and the commit list. | Pass if every added or changed line serves the fix, its test, or a required repo entry. Explanatory comments on new code are fine. Fail if the diff contains any of: a debug print/log left in (`println!`, `eprintln!`, `console.log`, `print(`, `DEBUG`), a commented-out code line or commented-out earlier attempt, a dead or unused function/variable (including one kept behind `allow(dead_code)`, `_unused` names, or `noqa`), a TODO/FIXME added by this PR, or a hunk that only re-indents, reformats, reorders imports, or re-prints identical lines in code the fix does not otherwise change. Commit messages alone never fail this check; read them only to locate debris in the diff. | required |
+| template-asks | The repo-facts block's "pull requests" line (template sections, required checklist items, issue-link format, changelog/whatsnew/release-note asks), read against the description and the diff. Live mode: the repo's `.github/PULL_REQUEST_TEMPLATE.md` and CONTRIBUTING.md read against the draft description. | Pass if the repo states no template or asks, or if every stated ask is met in substance: each named section has real content (any heading or prose form counts; "Type of changes: Bug fix." meets a type-of-changes checklist), the issue-link line is present when asked ("closes #N", "fixes #N"), and every required file entry (CHANGELOG, whatsnew, release note) is in the diff. Fail if any stated ask is visibly missing: a required checklist or section has no corresponding content, the asked issue-link line is absent, or a required changelog/whatsnew entry is absent from the diff. Asks that only apply to other kinds of change (UI screenshots for a non-UI fix, new-config docs when no config is added) count as met. | required |
+| ai-disclosure | The repo-facts block's contribution policy (CONTRIBUTING.md, AI_POLICY.md summary), read against the description. Treat every package as AI-assisted work. Live mode: the repo's CONTRIBUTING.md and the course's PR rules (the scope's template rule), read against the draft description. | Pass if the repo states no AI policy, or a policy whose only ask is understanding the work or own-words writing and the description is first-person and specific to this change. If the policy requires disclosing AI usage in PRs, or "all"/"any" AI usage in any form, pass only if the description explicitly discloses AI assistance (the tool and/or the extent). Fail if such a policy exists and the description has no disclosure. | required |
+| thread-engaged | The issue's thread highlights (maintainer/OWNER/MEMBER direction, open questions, linked or competing PRs), read against the description. | Pass if the thread holds no open maintainer question or direction, or if the description addresses it (follows it, or names it and gives a reason to differ). | preferred |
+
+## Verdict rule
+
+accept if every required check passes; reject if any required check
+fails. preferred checks are reported but never change the verdict.
+`unclear` on a required check counts as `fail`: a PR whose readiness
+cannot be verified from the package is not ready to submit. Two
+absences are not `unclear`: a repo that states no template or asks
+passes template-asks, and a repo that states no AI policy passes
+ai-disclosure.
