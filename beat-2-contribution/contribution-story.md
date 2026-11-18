@@ -1,4 +1,4 @@
-# Contribution: [Issue Title]
+# Contribution: Add Jest tests for the Markdown Editor (#390)
 
 Path: `beat-2-contribution/contribution-story.md`
 
@@ -8,10 +8,9 @@ format criteria grade exactly that. Your course repo link is the whole submissio
 files and no evidence uploads are part of Assignment 5.
 
 **Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
-**Issue:** [GitHub issue link]
+**Student:** Maeva Innocent
+**GitHub Username:** maevainnocent
+**Issue:** https://github.com/Bashamega/WebDevTools/issues/390
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
@@ -55,10 +54,9 @@ happened; these entries are the toolkit's own timeline.
 All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
-**Unit 5: [one line on the tool work]**
+**Unit 9: Built the issue-scout search strategy and patched it after real scans**
 
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
+I wrote two `gh search issues` queries from my fit profile (JavaScript good-first-issues, one also tagged documentation) and added date filters and a one-per-repo ranking rule after my first test run was flooded by repos that opened dozens of issues that same day. My first scan let through a Turkish-language issue, because `--language` matches the code, not the issue text, so I added "English only" to my profile and a ranking rule that drops non-English titles. Grading issues by hand showed gaps the rubric can't see: a PR that wasn't linked to its issue (WebDevTools #402), an issue that was already fixed in the code (Ocelot #4743), and a contribution-policy check that passed on silence for juxtaposition #162, whose maintainer told me after I claimed it that they don't accept AI help. I withdrew from #162, logged patches in scan-notes.md (search PRs for the issue's key terms, check for unwritten AI rules, disclose AI use upfront), and claimed WebDevTools #390 with that disclosure in my claim comment.
 
 **Unit 6: [one line on the tool work]**
 
