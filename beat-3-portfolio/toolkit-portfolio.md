@@ -160,7 +160,7 @@ Result: The filter removed 7/100 results from Q1 and 9/100 from Q2, including th
 Date: November 18, 2026
 Friction: The maintainer of issue #162 clarified that AI contributions were not accepted, even though the contribution-policy check had passed.
 Change: I added an AI disclosure to my next claim on issue #390.
-Result: I claimed #390 with disclosure. The maintainer's reply is still pending.
+Result: I claimed #390 with disclosure. The maintainer has replied and accepted it.
 
 ## Limitations and What's Next
 
