@@ -11,7 +11,7 @@ files and no evidence uploads are part of Assignment 5.
 **Student:** Maeva Innocent
 **GitHub Username:** maevainnocent
 **Issue:** https://github.com/Bashamega/WebDevTools/issues/390
-**Pull Request:** [GitHub PR link, once opened]
+**Pull Request:** https://github.com/Bashamega/WebDevTools/pull/707
 
 One repository, built across units 5 to 8, telling the whole story of your real
 contribution. Fill it as you work, not at the end — the sections below ask for evidence that
